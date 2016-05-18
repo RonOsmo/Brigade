@@ -74,6 +74,6 @@ namespace Brigade.Abstractions
 
 	public interface IWorkflowBuilder : IWorkflowBuilderCanCallLevel1, IWorkflowBuilderCanCallLevel2, IWorkflowBuilderCanCallLevel3
 	{
-		IWorkflowBuilderCanCallLevel1 Request(IEntityId entity, DateTime scheduledTime);
+		IWorkflowBuilderCanCallLevel1 Request(IEntityId entity, string taskDescription, DateTime scheduledTime);
 	}
 }

@@ -5,7 +5,9 @@
 			 Title="{Binding Title}">
 	<StackLayout>
 		<ScrollView>
-
+			<ListView BindingContext="MenuItems">
+				
+			</ListView>
 		</ScrollView>
 	</StackLayout>
 </ContentPage>

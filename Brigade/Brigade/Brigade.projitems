@@ -37,6 +37,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\UserRole.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WorkflowProcessCore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WorkflowType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\BrigadeLocalContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockAssetStockService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\DataAccessLayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockLoginService.cs" />
@@ -49,9 +50,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\AssetStocktakeView.xaml.cs">
       <DependentUpon>AssetStocktakeView.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -69,10 +67,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="$(MSBuildThisFileDirectory)Views\App.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Views\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
