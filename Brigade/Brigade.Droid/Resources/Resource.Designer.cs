@@ -26,6 +26,7 @@ namespace Brigade.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Brigade.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Attribute

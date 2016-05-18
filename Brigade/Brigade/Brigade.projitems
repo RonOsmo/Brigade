@@ -9,9 +9,73 @@
     <Import_RootNamespace>Brigade</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Abstractions\INavigator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Abstractions\IAssetServices.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Abstractions\IEntityBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Abstractions\ILoginService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Abstractions\IRepositoryService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Abstractions\IViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Abstractions\IWorkflow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\AssetModule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\AutofacModule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Bootstrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\MainModule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Asset.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Availability.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Brigade.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Authority.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Device.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EntityBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Event.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EventAttendee.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EventType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EventTypeRole.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Role.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\User.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\UserReminder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\UserRole.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WorkflowProcessCore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WorkflowType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\MockAssetStockService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\DataAccessLayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\MockLoginService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Navigator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ViewFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AssetStockcountViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AssetStocktakeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AssetStocktakeView.xaml.cs">
+      <DependentUpon>AssetStocktakeView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\TextCellExtended.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ViewFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)GettingStarted.Xamarin" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AssetStocktakeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Views\App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>
