@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.4.0\build\Microsoft.VisualStudio.Azure.Fabric.Application.props" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.4.0\build\Microsoft.VisualStudio.Azure.Fabric.Application.props')" />
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>9a484f18-7624-4033-9413-d0371a58d26f</ProjectGuid>
+    <ProjectVersion>1.4</ProjectVersion>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ApplicationPackageRoot\ApplicationManifest.xml" />
+    <None Include="ApplicationParameters\Cloud.xml" />
+    <None Include="ApplicationParameters\Local.1Node.xml" />
+    <None Include="ApplicationParameters\Local.5Node.xml" />
+    <None Include="PublishProfiles\Cloud.xml" />
+    <None Include="PublishProfiles\Local.1Node.xml" />
+    <None Include="PublishProfiles\Local.5Node.xml" />
+    <None Include="Scripts\Deploy-FabricApplication.ps1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Osmosys.ApplicationAuthority\Osmosys.ApplicationAuthority.csproj" />
+    <ProjectReference Include="..\Osmosys.Application\Osmosys.Application.csproj" />
+    <ProjectReference Include="..\Osmosys.Authority\Osmosys.Authority.csproj" />
+    <ProjectReference Include="..\Osmosys.Grouptask\Osmosys.Grouptask.csproj" />
+    <ProjectReference Include="..\Osmosys.Role\Osmosys.Role.csproj" />
+    <ProjectReference Include="..\Osmosys.Usertask\Osmosys.Usertask.csproj" />
+    <ProjectReference Include="..\Osmosys.User\Osmosys.User.csproj" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <PropertyGroup>
+    <ApplicationProjectTargetsPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Service Fabric Tools\Microsoft.VisualStudio.Azure.Fabric.ApplicationProject.targets</ApplicationProjectTargetsPath>
+  </PropertyGroup>
+  <Import Project="$(ApplicationProjectTargetsPath)" Condition="Exists('$(ApplicationProjectTargetsPath)')" />
+  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.4.0\build\Microsoft.VisualStudio.Azure.Fabric.Application.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.4.0\build\Microsoft.VisualStudio.Azure.Fabric.Application.targets')" />
+</Project>

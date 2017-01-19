@@ -1,0 +1,101 @@
+﻿{
+	"viewModelName": "Stocktake",
+	"userTaskType": "Brigade.ViewModels.Stocktake",
+	"partitionId": "vic.gov.au",
+	"baseUrl": "localhost:123456/stocktake",
+	"methods": [
+		{
+			"method": "InitiateTopLevelContainerAsync",
+			"returnBindingPath": "stocktakeId",
+			"args": [
+				{
+					"sequence": 1,
+					"bindingPath": "Metadata.UserDto",
+					"isCollection": false,
+					"ItemTypeName": null
+				}, {
+					"sequence": 2,
+					"bindingPath": "Metadata.BrigadeDto",
+					"isCollection": false,
+					"ItemTypeName": null
+				}, {
+					"sequence": 3,
+					"bindingPath": "Metadata.AuthorityDto",
+					"isCollection": false,
+					"ItemTypeName": null
+				}, {
+					"sequence": 4,
+					"bindingPath": "Location",
+					"isCollection": false,
+					"ItemTypeName": null
+				}
+			],
+			"validations": [
+			{
+				"bindingPath": "Location",
+				"typeName": "string",
+				"validateNonNull": true,
+				"condition": "!string.IsNullOrWhitespace",
+				"comparisonValue": ""
+			}],
+			"roles": [
+				"stocktakeInitiatorRole",
+				"captainRole"
+			],
+		},
+		{
+			"method": "InitiateContainerAsync",
+			"returnBindingPath": "stocktakeId",
+			"args": [{
+				"sequence": 1,
+				"bindingPath": "Stock.Dto",
+				"isCollection": false,
+				"ItemTypeName": null
+			}, {
+				"sequence": 2,
+				"bindingPath": "Metadata.User.Dto",
+				"isCollection": false,
+				"ItemTypeName": null
+			}, {
+				"sequence": 3,
+				"bindingPath": "Metadata.User.Brigade.Dto",
+				"isCollection": false,
+				"ItemTypeName": null
+			}, {
+				"sequence": 4,
+				"bindingPath": "Metadata.User.Brigade.Authority.Dto",
+				"isCollection": false,
+				"ItemTypeName": null
+			}, {
+				"sequence": 5,
+				"bindingPath": "Location",
+				"isCollection": false,
+				"ItemTypeName": null
+			}],
+			"validations": [
+			{
+				"sequence": 1,
+				"bindingPath": "Stock",
+				"typeName": "Models.Stock",
+				"validateNonNull": true
+			}, {
+				"sequence": 2,
+				"bindingPath": "Stock.IsContainer",
+				"typeName": "bool",
+				"validateNonNull": true,
+				"condition": "==",
+				"comparisonValue": true
+			}, {
+				"sequence": 3,
+				"bindingPath": "Location",
+				"typeName": "string",
+				"validateNonNull": true,
+				"condition": "!string.IsNullOrWhitespace"
+			}],
+			"roles": [
+				"stocktakeInitiatorRole",
+				"captainRole"
+			],
+		}
+	]
+}

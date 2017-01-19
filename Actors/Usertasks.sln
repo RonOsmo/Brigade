@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "Usertasks", "Usertasks\Usertasks.sfproj", "{AE54380D-A13A-49DB-A943-A2B39187EA69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Osmosys.Usertask", "Osmosys.Usertask\Osmosys.Usertask.csproj", "{AD667F56-23ED-4349-BF7B-4A09EB667E13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Osmosys", "Osmosys\Osmosys.csproj", "{739080BA-C268-4559-A62A-0367FCCAE317}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE54380D-A13A-49DB-A943-A2B39187EA69}.Debug|x64.ActiveCfg = Debug|x64
+		{AE54380D-A13A-49DB-A943-A2B39187EA69}.Debug|x64.Build.0 = Debug|x64
+		{AE54380D-A13A-49DB-A943-A2B39187EA69}.Debug|x64.Deploy.0 = Debug|x64
+		{AE54380D-A13A-49DB-A943-A2B39187EA69}.Release|x64.ActiveCfg = Release|x64
+		{AE54380D-A13A-49DB-A943-A2B39187EA69}.Release|x64.Build.0 = Release|x64
+		{AE54380D-A13A-49DB-A943-A2B39187EA69}.Release|x64.Deploy.0 = Release|x64
+		{AD667F56-23ED-4349-BF7B-4A09EB667E13}.Debug|x64.ActiveCfg = Debug|x64
+		{AD667F56-23ED-4349-BF7B-4A09EB667E13}.Debug|x64.Build.0 = Debug|x64
+		{AD667F56-23ED-4349-BF7B-4A09EB667E13}.Release|x64.ActiveCfg = Release|x64
+		{AD667F56-23ED-4349-BF7B-4A09EB667E13}.Release|x64.Build.0 = Release|x64
+		{739080BA-C268-4559-A62A-0367FCCAE317}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{739080BA-C268-4559-A62A-0367FCCAE317}.Debug|x64.Build.0 = Debug|Any CPU
+		{739080BA-C268-4559-A62A-0367FCCAE317}.Release|x64.ActiveCfg = Release|Any CPU
+		{739080BA-C268-4559-A62A-0367FCCAE317}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

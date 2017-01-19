@@ -1,17 +1,21 @@
-﻿
+﻿using System;
 using System.ComponentModel;
 
 namespace Brigade.Abstractions
 {
-	public interface IEntityBase<T>
+	public interface IEntityBase<T> where T : class, IEntityId
     {
-		T Container { get; set; }
+		T Container { get; }
+		bool UseContainerFullPath { get; }
 	}
 
 	public interface IEntityId : INotifyPropertyChanged
 	{
-		string Id { get; set; }
-		void SetId(string identifier);
-		void SetId();
+		string Id { get; }
+		string SetIdExtras();
+		DateTime CreatedAt { get; }
+		DateTime UpdatedAt { get; }
+		long Version { get; }
+		bool Deleted { get; }
 	}
 }

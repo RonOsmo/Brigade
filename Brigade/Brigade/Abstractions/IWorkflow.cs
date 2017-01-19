@@ -6,44 +6,51 @@ namespace Brigade.Abstractions
 {
 	public interface IWorkflowActivity
 	{
-		string Name { get; }
-		string TypeName { get; }
-		bool IsDone { get; }
-		bool IsInitialised { get; }
-		bool IsActivated { get; set; }
-		bool IsReady { get; }
+		IDictionary<string, IWorkflowUserAction> Actions { get; }
+		string ActionTaken { get; }
+		bool CanExecuteAction(string actionName);
 		IList<string> Errors { get; }
-		void Initialise();
-		void Activate();
-		void Process();
-		bool Validate(ValidationType validationType);
+		bool IsDone { get; }
+		IWorkflowExecuteAction PreExecuteAction { get; }
+		IWorkflowExecuteAction PostExecuteAction { get; }
+		IDictionary<string, object> Variables { get; }
+		string WorkflowActivityId { get; }
+		string WorkflowProcessId { get; }
 	}
 
-	public enum ValidationType
+	public interface IWorkflowProcess
 	{
-		Activate = 1,
-		Process = 2,
+		IDictionary<string, IWorkflowActor> Actors { get; }
+		string CurrentStatus { get; }
+		string OwnerId { get; }
+		IList<IWorkflowStatus> Statuses { get; }
+		IDictionary<string, object> Variables { get; }
+		string WorkflowProcessId { get; }
 	}
 
-	public enum WorkflowStatus
+	public interface IWorkflowStatus
 	{
-		New = 0,
-		Executing = 1,
-		Suspended = 2,
-		Finished = 3,
-		CleaningUp = 4,
-		Failed = 5,
+		IDictionary<string, IWorkflowActivity> Activities { get; }
+		bool IsDone { get; }
+		string Name { get; }
 	}
 
-	public interface IWorkflowTask : IWorkflowActivity
+	public interface IWorkflowUserAction : System.Windows.Input.ICommand
 	{
-		IDictionary<string, Action> Actions { get; }
+		IList<IWorkflowActor> Actors { get; }
+		string Name { get; }
 	}
 
-	public interface IWorkflowProcess : IWorkflowActivity
+	public interface IWorkflowExecuteAction : System.Windows.Input.ICommand
 	{
-		IList<IWorkflowActivity> Activities { get; }
-		WorkflowStatus CurrentState { get; }
+		string Name { get; }
+	}
+
+	public interface IWorkflowActor 
+	{
+		bool CanExecute(User user);
+		string Name { get; }
+		IList<string> Roles { get; }
 	}
 
 	public interface IWorkflowBuilderCanCallLevel1
@@ -69,11 +76,12 @@ namespace Brigade.Abstractions
 		IWorkflowBuilderCanCallLevel3 Role(string role);
 		IWorkflowBuilderCanCallLevel3 User(User user);
 		IWorkflowBuilderCanCallLevel3 Role(Role role);
-		IList<UserTask> Requests();
+		IList<UserTask> Tasks();
 	}
 
 	public interface IWorkflowBuilder : IWorkflowBuilderCanCallLevel1, IWorkflowBuilderCanCallLevel2, IWorkflowBuilderCanCallLevel3
 	{
-		IWorkflowBuilderCanCallLevel1 Request(IEntityId entity, string taskDescription, DateTime scheduledTime);
+		IWorkflowBuilderCanCallLevel1 Request(IEntityId entity);
+		IWorkflowBuilderCanCallLevel1 Request(IEntityId entity, DateTime scheduledTime);
 	}
 }

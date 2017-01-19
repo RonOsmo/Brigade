@@ -1,9 +1,9 @@
 ﻿
 namespace Brigade.Models
 {
-    public class WorkflowType : EntityBase<Brigade>
+    public class WorkflowType : AnyContainer
 	{
-		public string WorkflowTypeId { get; set; }
+		public string Name { get; set; }
 		public string Description { get; set; }
 		public string WorkflowDefinitionJson { get; set; }
 	}

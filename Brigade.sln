@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Brigade", "Brigade\Brigade\Brigade.shproj", "{AAF18E9C-EEE5-4DC3-B5D7-D6081E0A07D1}"
 EndProject
@@ -11,14 +11,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brigade.iOS", "Brigade\Brig
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brigade.Droid", "Brigade\Brigade.Droid\Brigade.Droid.csproj", "{4791909F-4F2F-489A-BF3A-51C3C275746A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brigade.UWP", "Brigade.UWP\Brigade.UWP.csproj", "{1954D8A2-CC5A-4106-9A36-04F3EBB05B4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brigade.UWP", "Brigade\Brigade.UWP\Brigade.UWP.csproj", "{1954D8A2-CC5A-4106-9A36-04F3EBB05B4E}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Brigade\Brigade\Brigade.projitems*{1954d8a2-cc5a-4106-9a36-04f3ebb05b4e}*SharedItemsImports = 4
+		Brigade\Brigade\Brigade.projitems*{4791909f-4f2f-489a-bf3a-51c3c275746a}*SharedItemsImports = 4
+		Brigade\Brigade\Brigade.projitems*{8bd6a818-5dd3-4494-a3fa-37107c5d1869}*SharedItemsImports = 4
 		Brigade\Brigade\Brigade.projitems*{aaf18e9c-eee5-4dc3-b5d7-d6081e0a07d1}*SharedItemsImports = 13
 		Brigade\Brigade\Brigade.projitems*{f70d59d1-a7bd-4932-8c05-84725bad6f20}*SharedItemsImports = 4
-		Brigade\Brigade\Brigade.projitems*{8bd6a818-5dd3-4494-a3fa-37107c5d1869}*SharedItemsImports = 4
-		Brigade\Brigade\Brigade.projitems*{4791909f-4f2f-489a-bf3a-51c3c275746a}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU

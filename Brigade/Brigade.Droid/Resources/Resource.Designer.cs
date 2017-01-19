@@ -26,6 +26,10 @@ namespace Brigade.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Microsoft.WindowsAzure.Mobile.Files.Resource.String.ApplicationName = global::Brigade.Droid.Resource.String.ApplicationName;
+			global::Microsoft.WindowsAzure.Mobile.Files.Resource.String.Hello = global::Brigade.Droid.Resource.String.Hello;
+			global::PCLStorage.Resource.String.ApplicationName = global::Brigade.Droid.Resource.String.ApplicationName;
+			global::PCLStorage.Resource.String.Hello = global::Brigade.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Brigade.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -2924,6 +2928,12 @@ namespace Brigade.Droid
 		
 		public partial class String
 		{
+			
+			// aapt resource value: 0x7f080027
+			public const int ApplicationName = 2131230759;
+			
+			// aapt resource value: 0x7f080026
+			public const int Hello = 2131230758;
 			
 			// aapt resource value: 0x7f08000f
 			public const int abc_action_bar_home_description = 2131230735;

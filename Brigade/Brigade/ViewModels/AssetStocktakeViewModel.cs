@@ -68,9 +68,9 @@ namespace Brigade.ViewModels
 			if (Parent != null && !string.IsNullOrWhiteSpace(TargetUser))
 			{
 				var requests = _workflowBuilder
-					.Request(Parent, When)
+					.Request(Parent, "Count Assets", When)
 					.User(TargetUser)
-					.Requests();
+					.Tasks();
 			}
 		}
 

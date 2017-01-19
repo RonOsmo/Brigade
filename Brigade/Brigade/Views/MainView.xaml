@@ -4,10 +4,10 @@
              x:Class="Brigade.Views.MainView"
 			 Title="{Binding Title}">
 	<StackLayout>
-		<ScrollView>
-			<ListView BindingContext="MenuItems">
-				
-			</ListView>
-		</ScrollView>
+		<ListView Name="Menu" BindingContext="MenuItems">
+			<ListView.ItemTemplate>
+				<Button Text="{Binding Name}" Command="{Binding Command}" />
+			</ListView.ItemTemplate>
+		</ListView>
 	</StackLayout>
 </ContentPage>

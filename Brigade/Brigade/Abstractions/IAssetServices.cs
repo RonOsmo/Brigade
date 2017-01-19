@@ -12,7 +12,7 @@ namespace Brigade.Abstractions
 		Task SaveAsync(IEnumerable<Asset> children);
     }
 
-    public interface IAdminAssetService : IRepositoryService<Asset>
+    public interface IAdminAssetService
     {
 
     }
