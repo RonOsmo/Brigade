@@ -24,8 +24,7 @@ namespace Osmosys
     [StatePersistence(StatePersistence.Persisted)]
     internal class Role : Actor, IRole
     {
-        private readonly ActorService _actorService;
-        private readonly ActorId _actorId;
+        private ActorService _actorService;
 
         /// <summary>
         /// Initializes a new instance of Role
@@ -36,19 +35,23 @@ namespace Osmosys
             : base(actorService, actorId)
         {
             _actorService = actorService;
-            _actorId = actorId;
         }
 
+        /// <summary>
+        /// This method is called whenever an actor is activated.
+        /// An actor is activated the first time any of its methods are invoked.
+        /// </summary>
         protected override Task OnActivateAsync()
         {
-            ActorEventSource.Current.ActorMessage(this, $"Role {_actorId} with ServiceName: '{_actorService.ActorTypeInformation.ServiceName}' activated.");
-            return Task.Delay(1);
+            ActorEventSource.Current.ActorMessage(this, "Role activated.");
+
             // The StateManager is this actor's private state store.
             // Data stored in the StateManager will be replicated for high-availability for actors that use volatile or persisted state storage.
             // Any serializable object can be saved in the StateManager.
             // For more information, see https://aka.ms/servicefabricactorsstateserialization
 
             //await this.StateManager.SetStateAsync("LoggedInCount", 0);
+            return Task.Delay(new TimeSpan(0,0,0,0,50));
         }
 
         protected override async Task OnDeactivateAsync()
@@ -297,7 +300,7 @@ namespace Osmosys
                 await this.StateManager.SetStateAsync("Role." + role.Path, role);
                 if (role.RoleType == RoleType.Custom)
                 {
-                    var applicationAuthorityProxy = ActorProxy.Create<IApplicationAuthority>(new ActorId(toAuthorityPath));
+                    var applicationAuthorityProxy = ActorProxy.Create<IApplicationAuthority>(new ActorId(role.ApplicationPath + "." + toAuthorityPath));
                     await applicationAuthorityProxy.AddCreateRoleAsync(role.Name);
                 }
             }

@@ -7,7 +7,7 @@
     <ProjectGuid>{72126FC8-C9F0-4ABA-B5CA-5C4D778801B9}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Osmosys.Role</RootNamespace>
+    <RootNamespace>Osmosys</RootNamespace>
     <AssemblyName>Osmosys.Role</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

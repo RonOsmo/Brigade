@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors.Runtime;
 
 
-namespace Osmosys.Authority
+namespace Osmosys
 {
     internal static class Program
     {
@@ -22,7 +22,7 @@ namespace Osmosys.Authority
                 // are automatically populated when you build this project.
                 // For more information, see https://aka.ms/servicefabricactorsplatform
 
-                ActorRuntime.RegisterActorAsync<Osmosys.Authority.Authority>(
+                ActorRuntime.RegisterActorAsync<Authority>(
                    (context, actorType) => new ActorService(context, actorType)).GetAwaiter().GetResult();
 
                 Thread.Sleep(Timeout.Infinite);

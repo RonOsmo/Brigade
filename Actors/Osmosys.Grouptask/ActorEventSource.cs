@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors.Runtime;
 
-namespace Osmosys.Grouptask
+namespace Osmosys
 {
-    [EventSource(Name = "MyCompany-Applications-Osmosys.Grouptask")]
+    [EventSource(Name = "Osmosys-Admin-Grouptask")]
     internal sealed class ActorEventSource : EventSource
     {
         public static readonly ActorEventSource Current = new ActorEventSource();

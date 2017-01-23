@@ -37,6 +37,10 @@
     <ProjectReference Include="..\Osmosys.Usertask\Osmosys.Usertask.csproj" />
     <ProjectReference Include="..\Osmosys.User\Osmosys.User.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
+    <Folder Include="pkg\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
   <PropertyGroup>
     <ApplicationProjectTargetsPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Service Fabric Tools\Microsoft.VisualStudio.Azure.Fabric.ApplicationProject.targets</ApplicationProjectTargetsPath>

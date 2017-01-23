@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors.Runtime;
 
-namespace Osmosys.Application
+namespace Osmosys
 {
     internal static class Program
     {
@@ -21,8 +21,7 @@ namespace Osmosys.Application
                 // are automatically populated when you build this project.
                 // For more information, see https://aka.ms/servicefabricactorsplatform
 
-                ActorRuntime.RegisterActorAsync<Application>(
-                   (context, actorType) => new ActorService(context, actorType)).GetAwaiter().GetResult();
+                ActorRuntime.RegisterActorAsync<Application>().GetAwaiter().GetResult();
 
                 Thread.Sleep(Timeout.Infinite);
             }

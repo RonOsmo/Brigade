@@ -7,7 +7,7 @@
     <ProjectGuid>{EFF49B2C-86D6-4790-8D99-591E3586DCC6}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Osmosys.Grouptask</RootNamespace>
+    <RootNamespace>Osmosys</RootNamespace>
     <AssemblyName>Osmosys.Grouptask</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

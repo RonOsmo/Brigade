@@ -29,8 +29,8 @@ namespace Osmosys
         private readonly Uri _roleServiceUri = new Uri("fabric:/Applications/RoleActorService");
         private readonly Uri _authorityServiceUri = new Uri("fabric:/Applications/AuthorityActorService");
         private readonly Uri _applicationAuthorityServiceUri = new Uri("fabric:/Applications/ApplicationAuthorityActorService");
-        private readonly ActorService _actorService;
-        private readonly ActorId _actorId;
+        private ActorService _actorService;
+        private ActorId _actorId;
 
 
         /// <summary>

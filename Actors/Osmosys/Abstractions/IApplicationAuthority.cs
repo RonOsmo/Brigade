@@ -10,7 +10,7 @@ namespace Osmosys.Abstractions
 {
     public interface IApplicationAuthority : IActor
     {
-        Task AddCreateRoleAsync(string roleName);
+        Task<RoleDto> AddCreateRoleAsync(string roleName);
         Task<UserDto> AddCreateUserAsync(UserDto user);
         Task<ApplicationAuthorityDto> CreateAsync(ApplicationDto application, AuthorityDto authority);
         Task CreateUpdateRolesAsync(ApplicationDto newVersion);
@@ -24,6 +24,7 @@ namespace Osmosys.Abstractions
         Task LogoffUserAsync(PlatformDto platform, UserDto user);
         Task RemoveDeleteRoleAsync(RoleDto role);
         Task RemoveDeleteUserAsync(UserDto user);
+        Task RepointInheritedRolesAsync(string newAuthorityPath);
         Task UpdateUserAsync(UserDto user);
         Task UpdateRoleAsync(RoleDto user);
     }

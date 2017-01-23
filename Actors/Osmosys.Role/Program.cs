@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors.Runtime;
 
-namespace Osmosys.Role
+namespace Osmosys
 {
     internal static class Program
     {

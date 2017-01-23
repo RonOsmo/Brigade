@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors.Runtime;
 
-namespace Osmosys.Role
+namespace Osmosys
 {
-    [EventSource(Name = "Osmosys.Role")]
+    [EventSource(Name = "Osmosys-Admin-Role")]
     internal sealed class ActorEventSource : EventSource
     {
         public static readonly ActorEventSource Current = new ActorEventSource();

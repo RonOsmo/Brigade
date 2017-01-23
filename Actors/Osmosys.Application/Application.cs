@@ -11,7 +11,7 @@ using Osmosys.Abstractions;
 using Osmosys.DataContracts;
 using Osmosys.Exceptions;
 
-namespace Osmosys.Application
+namespace Osmosys
 {
     /// <remarks>
     /// This class represents an actor.
@@ -24,6 +24,9 @@ namespace Osmosys.Application
     [StatePersistence(StatePersistence.Persisted)]
     internal class Application : Actor, IApplication
     {
+        private readonly ActorService _actorService;
+        private readonly ActorId _actorId;
+
         /// <summary>
         /// Initializes a new instance of Application
         /// </summary>
@@ -32,11 +35,25 @@ namespace Osmosys.Application
         public Application(ActorService actorService, ActorId actorId)
             : base(actorService, actorId)
         {
+            _actorService = actorService;
+            _actorId = actorId;
         }
 
-        public Task AddApplicationRoleToUserAsync(RoleDto role, UserDto user)
+        protected override Task OnActivateAsync()
         {
-            throw new NotImplementedException();
+            ActorEventSource.Current.ActorMessage(this, $"Application {_actorId} with ServiceName: '{_actorService.ActorTypeInformation.ServiceName}' activated.");
+            return Task.Delay(1);
+            // The StateManager is this actor's private state store.
+            // Data stored in the StateManager will be replicated for high-availability for actors that use volatile or persisted state storage.
+            // Any serializable object can be saved in the StateManager.
+            // For more information, see https://aka.ms/servicefabricactorsstateserialization
+
+            //await this.StateManager.SetStateAsync("LoggedInCount", 0);
+        }
+
+        protected override async Task OnDeactivateAsync()
+        {
+            await base.OnDeactivateAsync();
         }
 
         public async Task<ApplicationDto> AddCreateVersionAsync(string currentVersion, string inheritsVersion, params string[] upgradeVersions)
@@ -63,7 +80,7 @@ namespace Osmosys.Application
                     await this.StateManager.SetStateAsync("Version." + currentVersion, version);
 
                     var versionProxy = ActorProxy.Create<IApplication>(new ActorId(version.VersionPath));
-                    await versionProxy.UpdateApplication(version);
+                    await versionProxy.UpgradeApplicationAsync(version);
                 }
             }
 
@@ -85,7 +102,7 @@ namespace Osmosys.Application
             await this.StateManager.SetStateAsync("Version." + currentVersion, childVersion);
 
             var childVersionProxy = ActorProxy.Create<IApplication>(new ActorId(childVersion.VersionPath));
-            childVersion = await childVersionProxy.UpdateApplication(childVersion);
+            childVersion = await childVersionProxy.UpgradeApplicationAsync(childVersion);
 
             return childVersion;
         }
@@ -278,6 +295,7 @@ namespace Osmosys.Application
             var application = await this.StateManager.GetStateAsync<ApplicationDto>("Application");
             if (string.IsNullOrWhiteSpace(application.ThisVersion))
                 return;
+
             var applicationProxy = ActorProxy.Create<IApplication>(new ActorId(application.Path));
             await applicationProxy.LoginUserAsync(platform, user);
         }
@@ -356,7 +374,7 @@ namespace Osmosys.Application
             }
         }
 
-        public async Task<ApplicationDto> UpdateApplication(ApplicationDto application)
+        public async Task<ApplicationDto> UpgradeApplicationAsync(ApplicationDto application)
         {
             var exists = await this.StateManager.TryGetStateAsync<ApplicationDto>("Application");
             if (!exists.HasValue)

@@ -1,33 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="ApplicationsType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="AdminType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Description>Basic Administrative Services supplied by Osmo Systems</Description>
   <Parameters>
+    <Parameter Name="AuthorityActorService_PartitionCount" DefaultValue="10" />
+    <Parameter Name="AuthorityActorService_MinReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="AuthorityActorService_TargetReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="RoleActorService_PartitionCount" DefaultValue="10" />
+    <Parameter Name="RoleActorService_MinReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="RoleActorService_TargetReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="UserActorService_PartitionCount" DefaultValue="10" />
+    <Parameter Name="UserActorService_MinReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="UserActorService_TargetReplicaSetSize" DefaultValue="3" />
     <Parameter Name="ApplicationAuthorityActorService_PartitionCount" DefaultValue="10" />
     <Parameter Name="ApplicationAuthorityActorService_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="ApplicationAuthorityActorService_TargetReplicaSetSize" DefaultValue="3" />
     <Parameter Name="ApplicationActorService_PartitionCount" DefaultValue="10" />
     <Parameter Name="ApplicationActorService_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="ApplicationActorService_TargetReplicaSetSize" DefaultValue="3" />
-    <Parameter Name="AuthorityActorService_PartitionCount" DefaultValue="10" />
-    <Parameter Name="AuthorityActorService_MinReplicaSetSize" DefaultValue="3" />
-    <Parameter Name="AuthorityActorService_TargetReplicaSetSize" DefaultValue="3" />
     <Parameter Name="GrouptaskActorService_PartitionCount" DefaultValue="10" />
     <Parameter Name="GrouptaskActorService_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="GrouptaskActorService_TargetReplicaSetSize" DefaultValue="3" />
-    <Parameter Name="RoleActorService_PartitionCount" DefaultValue="10" />
-    <Parameter Name="RoleActorService_MinReplicaSetSize" DefaultValue="3" />
-    <Parameter Name="RoleActorService_TargetReplicaSetSize" DefaultValue="3" />
     <Parameter Name="UsertaskActorService_PartitionCount" DefaultValue="10" />
     <Parameter Name="UsertaskActorService_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="UsertaskActorService_TargetReplicaSetSize" DefaultValue="3" />
-    <Parameter Name="UserActorService_PartitionCount" DefaultValue="10" />
-    <Parameter Name="UserActorService_MinReplicaSetSize" DefaultValue="3" />
-    <Parameter Name="UserActorService_TargetReplicaSetSize" DefaultValue="3" />
   </Parameters>
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
        should match the Name and Version attributes of the ServiceManifest element defined in the 
        ServiceManifest.xml file. -->
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="Osmosys.GrouptaskPkg" ServiceManifestVersion="1.0.0" />
+    <ServiceManifestRef ServiceManifestName="Osmosys.AuthorityPkg" ServiceManifestVersion="1.0.0" />
+  </ServiceManifestImport>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="Osmosys.RolePkg" ServiceManifestVersion="1.0.0" />
+  </ServiceManifestImport>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="Osmosys.UserPkg" ServiceManifestVersion="1.0.0" />
   </ServiceManifestImport>
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="Osmosys.ApplicationAuthorityPkg" ServiceManifestVersion="1.0.0" />
@@ -36,18 +43,27 @@
     <ServiceManifestRef ServiceManifestName="Osmosys.ApplicationPkg" ServiceManifestVersion="1.0.0" />
   </ServiceManifestImport>
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="Osmosys.AuthorityPkg" ServiceManifestVersion="1.0.0" />
-  </ServiceManifestImport>
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="Osmosys.RolePkg" ServiceManifestVersion="1.0.0" />
+    <ServiceManifestRef ServiceManifestName="Osmosys.GrouptaskPkg" ServiceManifestVersion="1.0.0" />
   </ServiceManifestImport>
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="Osmosys.UsertaskPkg" ServiceManifestVersion="1.0.0" />
   </ServiceManifestImport>
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="Osmosys.UserPkg" ServiceManifestVersion="1.0.0" />
-  </ServiceManifestImport>
   <DefaultServices>
+    <Service Name="AuthorityActorService" GeneratedIdRef="e6105bf0-3afb-4742-8422-f7665196792b|Persisted">
+      <StatefulService ServiceTypeName="AuthorityActorServiceType" TargetReplicaSetSize="[AuthorityActorService_TargetReplicaSetSize]" MinReplicaSetSize="[AuthorityActorService_MinReplicaSetSize]">
+        <UniformInt64Partition PartitionCount="[AuthorityActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatefulService>
+    </Service>
+    <Service Name="RoleActorService" GeneratedIdRef="0c1d6f73-df0f-436c-bbc0-602597e22f6c|Persisted">
+      <StatefulService ServiceTypeName="RoleActorServiceType" TargetReplicaSetSize="[RoleActorService_TargetReplicaSetSize]" MinReplicaSetSize="[RoleActorService_MinReplicaSetSize]">
+        <UniformInt64Partition PartitionCount="[RoleActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatefulService>
+    </Service>
+    <Service Name="UserActorService" GeneratedIdRef="e249b60c-5e7e-4e27-a4d1-1ec94828f255|Persisted">
+      <StatefulService ServiceTypeName="UserActorServiceType" TargetReplicaSetSize="[UserActorService_TargetReplicaSetSize]" MinReplicaSetSize="[UserActorService_MinReplicaSetSize]">
+        <UniformInt64Partition PartitionCount="[UserActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatefulService>
+    </Service>
     <Service Name="ApplicationAuthorityActorService" GeneratedIdRef="2c156819-7ee4-48a8-9a04-03bb20be4f7a|Persisted">
       <StatefulService ServiceTypeName="ApplicationAuthorityActorServiceType" TargetReplicaSetSize="[ApplicationAuthorityActorService_TargetReplicaSetSize]" MinReplicaSetSize="[ApplicationAuthorityActorService_MinReplicaSetSize]">
         <UniformInt64Partition PartitionCount="[ApplicationAuthorityActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
@@ -58,29 +74,14 @@
         <UniformInt64Partition PartitionCount="[ApplicationActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
       </StatefulService>
     </Service>
-    <Service Name="AuthorityActorService" GeneratedIdRef="e6105bf0-3afb-4742-8422-f7665196792b|Persisted">
-      <StatefulService ServiceTypeName="AuthorityActorServiceType" TargetReplicaSetSize="[AuthorityActorService_TargetReplicaSetSize]" MinReplicaSetSize="[AuthorityActorService_MinReplicaSetSize]">
-        <UniformInt64Partition PartitionCount="[AuthorityActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
-      </StatefulService>
-    </Service>
     <Service Name="GrouptaskActorService" GeneratedIdRef="b53f47a5-6288-4cab-863b-abdaf83532ec|Persisted">
       <StatefulService ServiceTypeName="GrouptaskActorServiceType" TargetReplicaSetSize="[GrouptaskActorService_TargetReplicaSetSize]" MinReplicaSetSize="[GrouptaskActorService_MinReplicaSetSize]">
         <UniformInt64Partition PartitionCount="[GrouptaskActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
       </StatefulService>
     </Service>
-    <Service Name="RoleActorService" GeneratedIdRef="0c1d6f73-df0f-436c-bbc0-602597e22f6c|Persisted">
-      <StatefulService ServiceTypeName="RoleActorServiceType" TargetReplicaSetSize="[RoleActorService_TargetReplicaSetSize]" MinReplicaSetSize="[RoleActorService_MinReplicaSetSize]">
-        <UniformInt64Partition PartitionCount="[RoleActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
-      </StatefulService>
-    </Service>
     <Service Name="UsertaskActorService" GeneratedIdRef="2396acf1-bf1a-40bb-aca5-fe709ffac161|Persisted">
       <StatefulService ServiceTypeName="UsertaskActorServiceType" TargetReplicaSetSize="[UsertaskActorService_TargetReplicaSetSize]" MinReplicaSetSize="[UsertaskActorService_MinReplicaSetSize]">
         <UniformInt64Partition PartitionCount="[UsertaskActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
-      </StatefulService>
-    </Service>
-    <Service Name="UserActorService" GeneratedIdRef="e249b60c-5e7e-4e27-a4d1-1ec94828f255|Persisted">
-      <StatefulService ServiceTypeName="UserActorServiceType" TargetReplicaSetSize="[UserActorService_TargetReplicaSetSize]" MinReplicaSetSize="[UserActorService_MinReplicaSetSize]">
-        <UniformInt64Partition PartitionCount="[UserActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
       </StatefulService>
     </Service>
     <!-- The section below creates instances of service types, when an instance of this 

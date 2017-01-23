@@ -7,7 +7,7 @@
     <ProjectGuid>{E2727C9B-3E1F-431D-9740-6D16D77E91D0}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Osmosys.ApplicationAuthority</RootNamespace>
+    <RootNamespace>Osmosys</RootNamespace>
     <AssemblyName>Osmosys.ApplicationAuthority</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

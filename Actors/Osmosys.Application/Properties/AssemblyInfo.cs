@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Application")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Osmosys.Actors")]
+[assembly: AssemblyDescription("Admin APIs")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Application")]
+[assembly: AssemblyCompany("Osmo Systems Pty Ltd")]
+[assembly: AssemblyProduct("Osmosys.Actors")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
